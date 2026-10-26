@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>Pulse Point | KCA First Aid Group</title>
+  <meta name="description" content="First-aid awareness, practical learning, and emergency preparedness for the KCA University community.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Pulse Point home">
+      <span class="brand-name">PULSE <i>POINT</i><small>KCA UNIVERSITY</small></span>
+    </a>
+    <button class="menu-toggle" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav" data-track-managed="true">
+      <span></span><span></span>
+    </button>
+    <nav class="site-nav" id="nav" aria-label="Main navigation">
+      <a href="#guides">Services</a>
+      <a href="#learn">Training</a>
+      <a href="#about">Our mission</a>
+      <a href="#map">Pulse Map</a>
+      <a class="nav-join" href="#join">Join Pulse Point <span aria-hidden="true">&rarr;</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>KCA FIRST AID GROUP</p>
+        <h1 id="hero-title">READY TO<br><span>RESPOND.</span></h1>
+        <p class="hero-intro">A student-led first aid group building a safer, more prepared KCA community through practical training and care for one another.</p>
+        <div class="hero-actions">
+          <a class="button button-red" href="#join">Join Pulse Point <span aria-hidden="true">&rarr;</span></a>
+          <a class="button button-outline" href="#learn">Explore training</a>
+        </div>
+        <div class="hero-signoff"><span>CALM</span><span>TRAINED</span><span>READY</span></div>
+      </div>
+      <div class="hero-art" aria-label="Pulse Point official badge">
+        <div class="badge-orbit orbit-one" aria-hidden="true"></div>
+        <div class="badge-orbit orbit-two" aria-hidden="true"></div>
+        <div class="badge-stage" data-depth>
+          <img class="hero-logo" src="assets/pulse-point-logo.jpg" alt="Pulse Point, KCA First Aid Group official emblem">
+        </div>
+        <div class="art-caption"><span>EST. KCA UNIVERSITY</span><span>FIRST AID &middot; COMMUNITY &middot; ACTION</span></div>
+      </div>
+      <div class="hero-index" aria-hidden="true">PP / KCA</div>
+    </section>
+
+    <section class="service-strip section-shell" aria-label="What Pulse Point offers">
+      <article class="service-card" data-reveal><span class="service-index">01 / LEARN</span><h2>First aid<br>training</h2><p>Build practical knowledge and confidence through guided learning.</p><a href="#learn" aria-label="Explore first aid training">Explore training <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="service-card service-card-accent" data-reveal><span class="service-index">02 / ACT</span><h2>Event<br>coverage</h2><p>Learn how trained student responders can support campus events.</p><a href="#join" aria-label="Register interest in event coverage">Get involved <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="service-card" data-reveal><span class="service-index">03 / CONNECT</span><h2>Emergency<br>readiness</h2><p>Know where to find help and what safe first steps to take.</p><a href="#guides" aria-label="Open emergency first aid guides">View quick guides <span aria-hidden="true">&rarr;</span></a></article>
+    </section>
+
+    <section class="urgent-note" aria-label="Emergency reminder">
+      <span class="urgent-mark" aria-hidden="true">!</span>
+      <p><strong>In an emergency, get help first.</strong> Contact qualified emergency services or campus security.</p>
+      <a href="#guides">See the quick guides <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="stats" aria-label="Pulse Point goals">
+      <div><strong>500<span>+</span></strong><span>students to reach</span></div>
+      <div><strong>50<span>+</span></strong><span>volunteer goal</span></div>
+      <div><strong>12</strong><span>training sessions goal</span></div>
+      <div class="stats-mission"><span class="stats-rule" aria-hidden="true"></span><strong>One mission</strong><span>A safer campus</span></div>
+    </section>
+
+    <section class="about section-shell" id="about" aria-labelledby="about-title">
+      <div class="section-kicker"><span>01</span><span>WHY PULSE POINT?</span></div>
+      <div class="about-grid">
+        <div>
+          <h2 id="about-title">Confidence before<br>the emergency.</h2>
+          <p class="section-lead">Emergencies can happen anywhere. Knowing the first safe step can help someone stay calm while professional help is on the way.</p>
+        </div>
+        <div class="about-detail">
+          <p>Pulse Point is a student-led initiative to make first-aid education easier to access, practise, and remember across the KCA University community.</p>
+          <a class="text-link" href="#learn">How we build skills <span aria-hidden="true">↗</span></a>
+          <div class="about-stamp" aria-hidden="true"><span>BE</span><b>THE<br>PULSE</b><span>· KCA ·</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="guides-section" id="guides" aria-labelledby="guides-title">
+      <div class="section-shell">
+        <div class="section-topline">
+          <div>
+            <div class="section-kicker section-kicker-light"><span>02</span><span>EMERGENCY FIRST AID HUB</span></div>
+            <h2 id="guides-title">Know what to do first.</h2>
+          </div>
+          <p>Short, practical reminders for common emergencies. In a serious emergency, contact qualified emergency services or campus security.</p>
+        </div>
+        <div class="guide-grid" id="guideCards"></div>
+        <p class="guide-disclaimer">General education only. These guides do not replace certified first-aid training or professional medical care.</p>
+      </div>
+    </section>
+
+    <section class="challenge-section" id="challenge" aria-labelledby="challenge-title">
+      <div class="section-shell challenge-layout">
+        <div class="challenge-intro">
+          <div class="section-kicker"><span>03</span><span>60-SECOND CHALLENGE</span></div>
+          <h2 id="challenge-title">What would<br>you do?</h2>
+          <p>Try a few campus scenarios and see what you already know. Every answer is a chance to learn.</p>
+          <div class="challenge-time"><span aria-hidden="true">↳</span> 5 questions · about 1 minute</div>
+        </div>
+        <div class="quiz" id="quiz" aria-live="polite" aria-atomic="true">
+          <div class="quiz-topline"><span class="quiz-label">QUICK CHECK</span><span id="qcount"></span></div>
+          <h3 id="question"></h3>
+          <div id="answers" class="answer-list"></div>
+          <div class="progress" aria-label="Challenge progress"><span id="bar"></span></div>
+          <p class="quiz-feedback" id="quizFeedback" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="learn-section section-shell" id="learn" aria-labelledby="learn-title">
+      <div class="section-topline learn-heading">
+        <div>
+          <div class="section-kicker"><span>04</span><span>LEARN & TRAIN</span></div>
+          <h2 id="learn-title">Skills grow with practice.</h2>
+        </div>
+        <p>Explore the learning paths Pulse Point aims to bring to campus.</p>
+      </div>
+      <div class="learning-grid">
+        <article class="learning-card"><span class="learning-number">01</span><h3>First aid basics</h3><p>Short lessons covering essential first-response principles.</p><span class="learning-arrow" aria-hidden="true">↗</span></article>
+        <article class="learning-card"><span class="learning-number">02</span><h3>Workshop sessions</h3><p>Hands-on demonstrations and student training activities.</p><span class="learning-arrow" aria-hidden="true">↗</span></article>
+        <article class="learning-card"><span class="learning-number">03</span><h3>Scenario practice</h3><p>Build confidence through realistic campus situations.</p><span class="learning-arrow" aria-hidden="true">↗</span></article>
+      </div>
+    </section>
+
+    <section class="map-section" id="map" aria-labelledby="map-title">
+      <div class="section-shell map-layout">
+        <div class="map-copy">
+          <div class="section-kicker section-kicker-light"><span>05</span><span>PULSE MAP · PROTOTYPE</span></div>
+          <h2 id="map-title">Find safety.<br>Know where to go.</h2>
+          <p>This prototype shows how verified first-aid kits, campus security, clinics, and AEDs could be displayed after approval and verification.</p>
+          <div class="map-legend" aria-label="Map marker key">
+            <span><i class="legend-dot dot-red"></i>First-aid kit</span>
+            <span><i class="legend-dot dot-blue"></i>Security</span>
+            <span><i class="legend-dot dot-green"></i>Medical</span>
+            <span><i class="legend-dot dot-violet"></i>AED</span>
+          </div>
+        </div>
+        <div class="map-card">
+          <div class="map-label"><span class="map-live-dot"></span> CAMPUS SAFETY MAP</div>
+          <div class="map-canvas" role="group" aria-label="Illustrative campus map with unverified demo markers">
+            <div class="map-block block-one"></div><div class="map-block block-two"></div><div class="map-block block-three"></div>
+            <div class="map-road road-one"></div><div class="map-road road-two"></div><div class="map-road road-three"></div>
+            <button class="map-marker marker-kit marker-one" type="button" data-map-point="First-aid kit" aria-label="Demo first-aid kit location" aria-pressed="false"><span>+</span></button>
+            <button class="map-marker marker-security marker-two" type="button" data-map-point="Security" aria-label="Demo security location" aria-pressed="false"><span>S</span></button>
+            <button class="map-marker marker-medical marker-three" type="button" data-map-point="Medical" aria-label="Demo medical location" aria-pressed="false"><span>M</span></button>
+            <button class="map-marker marker-kit marker-four" type="button" data-map-point="First-aid kit" aria-label="Demo first-aid kit location" aria-pressed="false"><span>+</span></button>
+            <button class="map-marker marker-aed marker-five" type="button" data-map-point="AED" aria-label="Demo AED location" aria-pressed="false"><span>A</span></button>
+            <span class="map-campus-label">KCA UNIVERSITY</span>
+          </div>
+          <p class="map-caption" role="status" aria-live="polite">Demo locations · not verified emergency points</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="join-section section-shell" id="join" aria-labelledby="join-title">
+      <div class="join-copy">
+        <div class="section-kicker"><span>06</span><span>JOIN PULSE POINT</span></div>
+        <h2 id="join-title">Be part of<br>the response.</h2>
+        <p>Register your interest in training, volunteering, or supporting the initiative.</p>
+        <div class="join-note"><span class="join-note-mark" aria-hidden="true">↗</span><span>Your registration and site activity will be emailed to the Pulse Point team.</span></div>
+      </div>
+      <form class="join-form" id="joinForm">
+        <label for="joinName">Full name</label>
+        <input id="joinName" required name="name" autocomplete="name" maxlength="100" placeholder="Your name">
+        <label for="joinEmail">Email address</label>
+        <input id="joinEmail" required type="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com">
+        <label for="joinInterest">Area of interest</label>
+        <select id="joinInterest" name="interest" required>
+          <option value="">Choose an area</option>
+          <option value="First-aid training">First-aid training</option>
+          <option value="Volunteer responder community">Volunteer responder community</option>
+          <option value="Innovation / technology">Innovation / technology</option>
+          <option value="Partnership & support">Partnership & support</option>
+        </select>
+        <button class="button button-red submit-button" type="submit">Submit interest <span aria-hidden="true">↗</span></button>
+        <p class="form-message" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home" aria-label="Pulse Point home">
+      <span class="brand-name">PULSE <i>POINT</i><small>KCA UNIVERSITY</small></span>
+    </a>
+    <p>Student First Aid & Emergency Preparedness Initiative · KCA University Innovation Week 2026</p>
+    <p>Every second counts. Be the pulse.</p>
+    <small class="privacy-note">Interaction activity and registration details are emailed to Pulse Point for follow-up.</small>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-modal-dismiss></div>
+    <section class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalNotice">
+      <button class="modal-close" id="close" type="button" aria-label="Close quick guide">×</button>
+      <p class="section-kicker"><span>QUICK GUIDE</span></p>
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+      <p class="modal-notice" id="modalNotice">General education only. This is not a substitute for certified first-aid training or professional medical care.</p>
+    </section>
+  </div>
+</body>
+</html>
