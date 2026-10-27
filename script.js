@@ -145,7 +145,8 @@ function getSessionId() {
     window.sessionStorage.setItem(sessionStorageKey, newId);
     return newId;
   } catch {
-    return "session-unavailable";
+    // Storage can be blocked in private browsing; keep event IDs valid for the API.
+    return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
   }
 }
 
