@@ -447,8 +447,43 @@ joinForm.addEventListener("submit", async (event) => {
   }
 });
 
+const feedbackForm = document.querySelector("#feedbackForm");
+const feedbackMessage = document.querySelector("#feedbackMsg");
+const feedbackSubmit = feedbackForm.querySelector("button[type='submit']");
+feedbackSubmit.dataset.trackManaged = "true";
+
+feedbackForm.addEventListener("invalid", () => {
+  track("feedback_error", { reason: "validation" });
+}, true);
+
+feedbackForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const values = new FormData(feedbackForm);
+  const details = {
+    name: String(values.get("name") || "").trim(),
+    email: String(values.get("email") || "").trim(),
+    type: String(values.get("type") || ""),
+    message: String(values.get("message") || "").trim()
+  };
+
+  feedbackMessage.className = "form-message";
+  feedbackMessage.textContent = "Sending your feedback…";
+  feedbackSubmit.disabled = true;
+  const sent = await track("feedback_submit", details);
+  feedbackSubmit.disabled = false;
+
+  if (sent) {
+    feedbackForm.reset();
+    feedbackMessage.classList.add("is-success");
+    feedbackMessage.textContent = "Thanks. Your feedback has been sent to the Pulse Point team.";
+  } else {
+    feedbackMessage.classList.add("is-error");
+    feedbackMessage.textContent = "We could not send your feedback right now. Please try again later.";
+  }
+});
+
 const revealTargets = document.querySelectorAll(
-  ".stats > div, .about-grid > div, .section-topline, .challenge-intro, .quiz, .learning-card, .map-copy, .map-card, .join-copy, .join-form"
+  ".stats > div, .about-grid > div, .section-topline, .challenge-intro, .quiz, .learning-card, .map-copy, .map-card, .join-copy, .join-form, .feedback-copy, .feedback-form"
 );
 revealTargets.forEach((element) => { element.dataset.reveal = ""; });
 

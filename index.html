@@ -42,7 +42,7 @@
         <div class="badge-orbit orbit-one" aria-hidden="true"></div>
         <div class="badge-orbit orbit-two" aria-hidden="true"></div>
         <div class="badge-stage" data-depth>
-          <img class="hero-logo" src="assets/pulse-point-logo.jpg" alt="Pulse Point, KCA First Aid Group official emblem">
+          <img class="hero-logo" src="assets/logo%201.jpeg" alt="Pulse Point, KCA University first aid group emblem">
         </div>
         <div class="art-caption"><span>EST. KCA UNIVERSITY</span><span>FIRST AID &middot; COMMUNITY &middot; ACTION</span></div>
       </div>
@@ -182,6 +182,33 @@
         </select>
         <button class="button button-red submit-button" type="submit">Submit interest <span aria-hidden="true">↗</span></button>
         <p class="form-message" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="feedback-section section-shell" id="feedback" aria-labelledby="feedback-title">
+      <div class="feedback-copy">
+        <div class="section-kicker"><span>07</span><span>CUSTOMER FEEDBACK</span></div>
+        <h2 id="feedback-title">Tell us<br>what you think.</h2>
+        <p>Share your feedback, report an issue, or suggest how Pulse Point can better serve the KCA community.</p>
+      </div>
+      <form class="feedback-form" id="feedbackForm">
+        <label for="feedbackName">Full name</label>
+        <input id="feedbackName" required name="name" autocomplete="name" maxlength="100" placeholder="Your name">
+        <label for="feedbackEmail">Email address</label>
+        <input id="feedbackEmail" required type="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com">
+        <label for="feedbackType">Feedback type</label>
+        <select id="feedbackType" name="type" required>
+          <option value="">Choose a type</option>
+          <option value="General">General feedback</option>
+          <option value="Bug report">Bug report</option>
+          <option value="Suggestion">Suggestion</option>
+          <option value="Praise">Praise</option>
+          <option value="Other">Other</option>
+        </select>
+        <label for="feedbackMessage">Message</label>
+        <textarea id="feedbackMessage" name="message" required maxlength="1000" placeholder="What would you like to tell us?"></textarea>
+        <button class="button button-red submit-button" type="submit">Send feedback <span aria-hidden="true">↗</span></button>
+        <p class="form-message" id="feedbackMsg" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>

@@ -19,6 +19,31 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 BASE_DIR = Path(__file__).resolve().parent
 RECIPIENT = "pulsepoint034@gmail.com"
+
+
+def _load_env_file() -> None:
+    env_path = BASE_DIR / ".env"
+    if not env_path.exists():
+        return
+    try:
+        for line in env_path.read_text(encoding="utf-8").splitlines():
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            if "=" not in stripped:
+                continue
+            key, _, value = stripped.partition("=")
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = value
+    except OSError:
+        pass
+
+
+_load_env_file()
+
+
 MAX_BODY_BYTES = 16_384
 MAX_EVENTS_PER_MINUTE = 60
 RATE_WINDOW_SECONDS = 60
@@ -27,6 +52,14 @@ INTERESTS = {
     "Volunteer responder community",
     "Innovation / technology",
     "Partnership & support",
+}
+
+FEEDBACK_TYPES = {
+    "General",
+    "Bug report",
+    "Suggestion",
+    "Praise",
+    "Other",
 }
 
 EVENT_FIELDS = {
@@ -45,6 +78,8 @@ EVENT_FIELDS = {
     "challenge_retry": {},
     "join_submit": {"name": "name", "email": "email", "interest": "interest"},
     "join_error": {"reason": "reason"},
+    "feedback_submit": {"name": "name", "email": "email", "type": "type", "message": "message"},
+    "feedback_error": {"reason": "reason"},
 }
 
 _rate_lock = threading.Lock()
@@ -119,9 +154,21 @@ def _sanitize_details(event: str, value: object) -> dict[str, object]:
             if reason != "validation":
                 raise RequestError(400, "invalid_field")
             clean[key] = reason
+        elif kind == "type":
+            ftype = _clean_text(raw, 40)
+            if ftype not in FEEDBACK_TYPES:
+                raise RequestError(400, "invalid_feedback_type")
+            clean[key] = ftype
+        elif kind == "message":
+            message = _clean_text(raw, 1000)
+            if not message:
+                raise RequestError(400, "invalid_message")
+            clean[key] = message
 
     if event == "join_submit" and set(clean) != {"name", "email", "interest"}:
         raise RequestError(400, "incomplete_registration")
+    if event == "feedback_submit" and set(clean) != {"name", "email", "type", "message"}:
+        raise RequestError(400, "incomplete_feedback")
     return clean
 
 
@@ -177,7 +224,11 @@ def _send_activity_email(
     message = EmailMessage()
     message["From"] = sender
     message["To"] = RECIPIENT
-    message["Subject"] = f"Pulse Point customer activity | {event.replace('_', ' ')}"
+    if event == "feedback_submit":
+        subject = f"Pulse Point customer feedback | {details['type']}"
+    else:
+        subject = f"Pulse Point customer activity | {event.replace('_', ' ')}"
+    message["Subject"] = subject
     message.set_content(
         "Pulse Point customer activity\n\n"
         f"Event: {event}\n"
@@ -251,7 +302,7 @@ class PulsePointHandler(BaseHTTPRequestHandler):
             "/index.html": "index.html",
             "/style.css": "style.css",
             "/script.js": "script.js",
-            "/assets/pulse-point-logo.jpg": "assets/pulse-point-logo.jpg",
+            "/assets/logo%201.jpeg": "assets/logo 1.jpeg",
             "/assets/inter-latin.woff2": "assets/inter-latin.woff2",
             "/assets/oswald-latin.woff2": "assets/oswald-latin.woff2",
         }
@@ -272,6 +323,7 @@ class PulsePointHandler(BaseHTTPRequestHandler):
             ".css": "text/css; charset=utf-8",
             ".js": "text/javascript; charset=utf-8",
             ".jpg": "image/jpeg",
+            ".jpeg": "image/jpeg",
             ".woff2": "font/woff2",
         }[Path(file_name).suffix]
         self.send_response(200)
